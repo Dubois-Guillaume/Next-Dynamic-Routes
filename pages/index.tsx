@@ -1,0 +1,28 @@
+import { GetServerSideProps } from "next";
+const RandomChuckNorrisJoke: React.FC<{ categories: string[] }> = ({
+  categories,
+}) => {
+  // console.log("joke", joke);
+  return (
+    <div>
+      <ul>
+        {categories.map((element) => {
+          return <li key={element}>{element}</li>;
+        })}
+      </ul>
+    </div>
+  );
+};
+export default RandomChuckNorrisJoke;
+// This gets called on every request
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch data from external API
+  const response = await fetch("https://api.chucknorris.io/jokes/categories");
+  const categories = await response.json();
+  // Pass data to the page via props
+  return {
+    props: {
+      categories: categories,
+    },
+  };
+};
