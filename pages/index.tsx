@@ -1,19 +1,23 @@
 import { GetServerSideProps } from "next";
-const RandomChuckNorrisJoke: React.FC<{ categories: string[] }> = ({
+const ChuckNorrisJokeCategories: React.FC<{ categories: string[] }> = ({
   categories,
 }) => {
   // console.log("joke", joke);
   return (
     <div>
       <ul>
-        {categories.map((element) => {
-          return <li key={element}>{element}</li>;
+        {categories.map((category) => {
+          return (
+            <li key={category}>
+              <a href="#">{category}</a>
+            </li>
+          );
         })}
       </ul>
     </div>
   );
 };
-export default RandomChuckNorrisJoke;
+export default ChuckNorrisJokeCategories;
 // This gets called on every request
 export const getServerSideProps: GetServerSideProps = async () => {
   // Fetch data from external API
