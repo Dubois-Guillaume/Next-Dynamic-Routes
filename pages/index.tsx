@@ -10,7 +10,7 @@ const ChuckNorrisJokeCategories: React.FC<{ categories: string[] }> = ({
         {categories.map((category) => {
           return (
             <li key={category}>
-              <a href="./[category]">{category}</a>
+              <a href={`/${category}`}>{category}</a>
             </li>
           );
         })}
