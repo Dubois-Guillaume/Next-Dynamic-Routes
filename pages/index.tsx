@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+
 const ChuckNorrisJokeCategories: React.FC<{ categories: string[] }> = ({
   categories,
 }) => {
@@ -9,7 +10,7 @@ const ChuckNorrisJokeCategories: React.FC<{ categories: string[] }> = ({
         {categories.map((category) => {
           return (
             <li key={category}>
-              <a href="#">{category}</a>
+              <a href="./[category]">{category}</a>
             </li>
           );
         })}
@@ -17,6 +18,7 @@ const ChuckNorrisJokeCategories: React.FC<{ categories: string[] }> = ({
     </div>
   );
 };
+
 export default ChuckNorrisJokeCategories;
 // This gets called on every request
 export const getServerSideProps: GetServerSideProps = async () => {
